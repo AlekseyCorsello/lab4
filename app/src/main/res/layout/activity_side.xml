@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgd_color"
+    android:padding="@dimen/act_padd"
+    tools:context=".SideActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/sideActImg"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/side_img_height"
+                android:src="@drawable/vader"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_marg_top"
+                android:elevation="@dimen/card_elev"
+                app:cardCornerRadius="@dimen/card_corn_rad"
+                app:cardBackgroundColor="@color/row_color">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/card_padd">
+
+
+                    <TextView
+                        android:id="@+id/charName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/disney_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_hts" />
+
+                    <TextView
+                        android:id="@+id/charFilms"
+                        android:layout_below="@+id/charName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/film"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+
+                    <TextView
+                        android:id="@+id/charShortFilms"
+                        android:layout_below="@+id/charFilms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/short_film"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+
+                    <TextView
+                        android:id="@+id/charSeries"
+                        android:layout_below="@+id/charShortFilms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ser"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+
+                    <TextView
+                        android:id="@+id/charEnemies"
+                        android:layout_below="@+id/charSeries"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enemy"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+
+                    <TextView
+                        android:id="@+id/charFriends"
+                        android:layout_below="@+id/charEnemies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friend"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
