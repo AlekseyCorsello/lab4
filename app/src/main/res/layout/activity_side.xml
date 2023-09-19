@@ -25,11 +25,11 @@
 
 
             <ImageView
-                android:id="@+id/sideActImg"
+                android:id="@+id/thumbnail"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/side_img_width"
                 android:layout_height="@dimen/side_img_height"
-                android:src="@drawable/vader"/>
+                android:src="@drawable/lost_ark_tmp"/>
 
 
             <androidx.cardview.widget.CardView
@@ -48,56 +48,71 @@
 
 
                     <TextView
-                        android:id="@+id/charName"
+                        android:id="@+id/gameName"
                         android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/disney_name"
+                        android:text="@string/game_name"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_hts" />
 
                     <TextView
-                        android:id="@+id/charFilms"
-                        android:layout_below="@+id/charName"
+                        android:id="@+id/gameGenre"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gameName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/film"
+                        android:text="@string/game_genre"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_ts" />
 
                     <TextView
-                        android:id="@+id/charShortFilms"
-                        android:layout_below="@+id/charFilms"
+                        android:id="@+id/gameDescription"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gameGenre"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/short_film"
+                        android:text="@string/game_description"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_ts" />
 
                     <TextView
-                        android:id="@+id/charSeries"
-                        android:layout_below="@+id/charShortFilms"
+                        android:id="@+id/gameDevStudio"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gameDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ser"
+                        android:text="@string/game_dev_studio"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_ts" />
 
                     <TextView
-                        android:id="@+id/charEnemies"
-                        android:layout_below="@+id/charSeries"
+                        android:id="@+id/gamePublisher"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gameDevStudio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/enemy"
+                        android:text="@string/game_publisher"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_ts" />
 
                     <TextView
-                        android:id="@+id/charFriends"
-                        android:layout_below="@+id/charEnemies"
+                        android:id="@+id/gameDate"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gamePublisher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/friend"
+                        android:text="@string/game_date"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/side_ts" />
+
+                    <TextView
+                        android:id="@+id/gamePlatforms"
+                        android:layout_marginTop="@dimen/act_text_marg_top"
+                        android:layout_below="@+id/gameDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/game_platforms"
                         android:textColor="@color/white"
                         android:textSize="@dimen/side_ts" />
                 </RelativeLayout>

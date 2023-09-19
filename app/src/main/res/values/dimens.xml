@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="rv_row_ts">24sp</dimen>
+    <dimen name="rv_row_ts">18sp</dimen>
     <dimen name="side_hts">24sp</dimen>
     <dimen name="side_ts">16sp</dimen>
 
@@ -9,12 +9,16 @@
     <dimen name="card_marg_bott">10dp</dimen>
     <dimen name="card_elev">16dp</dimen>
     <dimen name="card_corn_rad">16dp</dimen>
-    <dimen name="card_img_size">100dp</dimen>
+    <dimen name="card_img_width">175dp</dimen>
+    <dimen name="card_height">100dp</dimen>
     <dimen name="card_img_padd">2dp</dimen>
     <dimen name="card_img_marg_start">16dp</dimen>
     <dimen name="shape_stroke_width">2dp</dimen>
-    <dimen name="card_text_marg_start">30dp</dimen>
+    <dimen name="card_text_marg_start">15dp</dimen>
     <dimen name="card_padd">20dp</dimen>
 
-    <dimen name="side_img_height">400dp</dimen>
+    <dimen name="side_img_width">365dp</dimen>
+    <dimen name="side_img_height">206dp</dimen>
+
+    <dimen name="act_text_marg_top">15dp</dimen>
 </resources>

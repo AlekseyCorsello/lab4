@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.example.lab3;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,12 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 implements MyInterface {
     private final MyInterface myInterface;
-
     Context context;
     ArrayList<RowModel> rowModels;
 
@@ -37,11 +40,16 @@ implements MyInterface {
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         holder.tvName.setText(rowModels.get(position).getRowName());
-        holder.imageView.setImageResource(rowModels.get(position).getImage());
+
+        Glide.with(context)
+                .load(rowModels.get(position).getThumbnail())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.imageView);
 
         holder.itemView.setOnClickListener(view -> {
             if (myInterface != null) {
-                int pos = holder.getAdapterPosition();
+//                int pos = holder.getAdapterPosition();
+                int pos = holder.getBindingAdapterPosition();
 
                 if (pos != RecyclerView.NO_POSITION) {
                     myInterface.onItemClick(pos);

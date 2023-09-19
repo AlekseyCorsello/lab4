@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/card_marg_top"
+        android:layout_height="@dimen/card_height"
         android:layout_marginBottom="@dimen/card_marg_bott"
         android:elevation="@dimen/card_elev"
-        app:cardCornerRadius="@dimen/card_corn_rad"
         app:cardBackgroundColor="@color/row_color"
+        app:cardCornerRadius="@dimen/card_corn_rad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,24 +22,26 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="@dimen/card_img_size"
-                android:layout_height="@dimen/card_img_size"
-                android:padding="@dimen/card_img_padd"
-                android:layout_marginStart="@dimen/card_img_marg_start"
+                android:layout_width="@dimen/card_img_width"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/card_img_marg_start"
                 android:background="@drawable/img_view_border"
-                android:src="@drawable/maui" />
+                android:padding="@dimen/card_img_padd"
+                android:src="@drawable/lost_ark_tmp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/imageView"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/card_text_marg_start"
-                android:textSize="@dimen/rv_row_ts"
+                android:layout_toEndOf="@id/imageView"
+                android:text="@string/game_name"
                 android:textColor="@color/white"
-                android:text="@string/disney_name" />
+                android:textSize="@dimen/rv_row_ts" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
