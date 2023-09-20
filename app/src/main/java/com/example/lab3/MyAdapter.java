@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 implements MyInterface {
@@ -48,7 +47,6 @@ implements MyInterface {
 
         holder.itemView.setOnClickListener(view -> {
             if (myInterface != null) {
-//                int pos = holder.getAdapterPosition();
                 int pos = holder.getBindingAdapterPosition();
 
                 if (pos != RecyclerView.NO_POSITION) {

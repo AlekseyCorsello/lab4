@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity implements MyInterface {
     String URL_BASE = "https://www.mmobomb.com/";
     ArrayList<RowModel> rowModels = new ArrayList<>();
-    List<Game> gameInfos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
 
         RecyclerView recyclerView = configureRecyclerView();
 
+        GameRepository repos = new GameRepository(getApplication());
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -36,24 +38,32 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
 
         JsonGameApi jsonGameApi = retrofit.create(JsonGameApi.class);
 
-        Call<List<Game>> call = jsonGameApi.getGameInfo();
+        Call<List<GameEntity>> call = jsonGameApi.getGameInfo();
 
-        call.enqueue(new Callback<List<Game>>() {
+        call.enqueue(new Callback<List<GameEntity>>() {
             @Override
-            public void onResponse(Call<List<Game>> call, Response<List<Game>> response) {
+            public void onResponse(Call<List<GameEntity>> call, Response<List<GameEntity>> response) {
                 if (!response.isSuccessful()) {
                     Log.d("onResponse().", "Code: " + response.code());
                     return;
                 }
 
-                gameInfos = response.body();
-                setUpRowModels();
+                List<GameEntity> gameEntities = response.body();
+                Toast.makeText(MainActivity.this,
+                        "Данные подгружены из API! "
+                                + gameEntities.size(), Toast.LENGTH_SHORT).show();
+
+                loadIntoDB(gameEntities, repos);
+                setUpRowModels(repos);
+
                 recyclerView.getAdapter().notifyDataSetChanged();
             }
 
             @Override
-            public void onFailure(Call<List<Game>> call, Throwable t) {
+            public void onFailure(Call<List<GameEntity>> call, Throwable t) {
                 Log.d("onFailure(): ", t.getMessage(), t);
+                setUpRowModels(repos);
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
         });
     }
@@ -67,33 +77,33 @@ public class MainActivity extends AppCompatActivity implements MyInterface {
         return recyclerView;
     }
 
-    private void setUpRowModels() {
-        for (Game game : gameInfos) {
+    private void loadIntoDB(List<GameEntity> list, GameRepository repos) {
+        repos.deleteAll();
+        //insert into db
+        for (GameEntity ent : list) {
+            repos.insert(ent);
+        }
+    }
+
+    private void setUpRowModels(GameRepository repos) {
+        for (GameEntity game : repos.getAllEntities()) {
             rowModels.add(new RowModel(
-                    game.getThumbnail(),
-                    game.getRowName(),
-                    game.getGenre(),
-                    game.getDescription(),
-                    game.getDevStudio(),
-                    game.getPublisher(),
-                    game.getDate(),
-                    game.getPlatform()));
+                    game.id,
+                    game.thumbnail,
+                    game.rowName,
+                    game.genre,
+                    game.description,
+                    game.devStudio,
+                    game.publisher,
+                    game.date,
+                    game.platform));
         }
     }
 
     @Override
     public void onItemClick(int pos) {
         Intent intent = new Intent(MainActivity.this, SideActivity.class);
-
-        intent.putExtra("NAME", rowModels.get(pos).getRowName());
-        intent.putExtra("THUMBNAIL", rowModels.get(pos).getThumbnail());
-        intent.putExtra("GENRE", rowModels.get(pos).getGenre());
-        intent.putExtra("DESCRIPTION", rowModels.get(pos).getDescription());
-        intent.putExtra("DEV_STUDIO", rowModels.get(pos).getDevStudio());
-        intent.putExtra("PUBLISHER", rowModels.get(pos).getPublisher());
-        intent.putExtra("DATE", rowModels.get(pos).getDate());
-        intent.putExtra("PLATFORMS", rowModels.get(pos).getPlatforms());
-
+        intent.putExtra("id", rowModels.get(pos).getId());
         startActivity(intent);
     }
 }

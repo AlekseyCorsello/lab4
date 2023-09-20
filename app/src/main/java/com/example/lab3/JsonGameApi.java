@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface JsonGameApi {
     @GET("api1/games")
-    Call<List<Game>> getGameInfo();
+    Call<List<GameEntity>> getGameInfo();
 }

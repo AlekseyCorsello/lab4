@@ -16,15 +16,11 @@ public class SideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side);
 
+        GameRepository repos = new GameRepository(getApplication());
 
-        String name = getIntent().getStringExtra("NAME");
-        String thumbnail = getIntent().getStringExtra("THUMBNAIL");
-        String genre = getIntent().getStringExtra("GENRE");
-        String description = getIntent().getStringExtra("DESCRIPTION");
-        String devStudio = getIntent().getStringExtra("DEV_STUDIO");
-        String publisher = getIntent().getStringExtra("PUBLISHER");
-        String date = getIntent().getStringExtra("DATE");
-        String platforms = getIntent().getStringExtra("PLATFORMS");
+        int id = getIntent().getIntExtra("id", 0);
+
+        GameEntity ent = repos.selectGameByDB_ID(id);
 
 
         TextView nameTV = findViewById(R.id.gameName);
@@ -38,16 +34,16 @@ public class SideActivity extends AppCompatActivity {
 
 
         Glide.with(this)
-                .load(thumbnail)
+                .load(ent.thumbnail)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(thumbnailIV);
 
-        nameTV.setText(name);
-        genreTV.setText(genre);
-        descriptionTV.setText(description);
-        devStudioTV.setText(devStudio);
-        publisherTV.setText(publisher);
-        dateTV.setText(date);
-        platformsTV.setText(platforms);
+        nameTV.setText(ent.rowName);
+        genreTV.setText(ent.genre);
+        descriptionTV.setText(ent.description);
+        devStudioTV.setText(ent.devStudio);
+        publisherTV.setText(ent.publisher);
+        dateTV.setText(ent.date);
+        platformsTV.setText(ent.platform);
     }
 }

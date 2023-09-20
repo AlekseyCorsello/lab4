@@ -7,6 +7,14 @@ android {
     compileSdk = 33
 
     defaultConfig {
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                compilerArgumentProviders(
+//                        RoomSchemaArgProvider(File(projectDir, "schemas"))
+//                )
+//            }
+//        }
+
         applicationId = "com.example.lab3"
         minSdk = 28
         targetSdk = 33
@@ -32,6 +40,11 @@ android {
 
 
 dependencies {
+    val room_version = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
     implementation ("androidx.recyclerview:recyclerview:1.3.1")
 
     implementation ("com.github.bumptech.glide:glide:4.12.0")

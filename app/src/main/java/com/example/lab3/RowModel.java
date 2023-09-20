@@ -1,6 +1,7 @@
 package com.example.lab3;
 
 public class RowModel {
+    private int id;
     private String thumbnail;
     private String rowName;
     private String genre;
@@ -10,7 +11,8 @@ public class RowModel {
     private String date;
     private String platforms;
 
-    public RowModel(String thumbnail, String rowName, String genre, String description, String devStudio, String publisher, String date, String platforms) {
+    public RowModel(int id, String thumbnail, String rowName, String genre, String description, String devStudio, String publisher, String date, String platforms) {
+        this.id = id;
         this.thumbnail = thumbnail;
         this.rowName = rowName;
         this.genre = genre;
@@ -51,5 +53,9 @@ public class RowModel {
 
     public String getPlatforms() {
         return platforms;
+    }
+
+    public int getId() {
+        return id;
     }
 }
